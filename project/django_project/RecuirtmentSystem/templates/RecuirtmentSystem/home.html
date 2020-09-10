@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home-page</title>
+    <!-- CSS only -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style type="text/css">
+
+.headpart{
+    background: #3494E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #EC6EAD, #3494E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #EC6EAD, #3494E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+</style>
+</head>
+<body>
+<div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+    <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+    <ul class="navbar-nav ml-auto">
+        {% if user.is_authenticated and user.is_employee %}
+        <p class="pt-2">logged in as <strong>{{ user.username }}</strong></p>
+         <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout'%}">Log Out</a>
+         </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register'%}">Register</a>
+         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'login'%}">Log In</a>
+         </li>
+        {% endif %}
+    </ul>
+  </nav>
+</div>
+
+<div class="Jumbotron text-white headpart">
+    <div class="container p-5">
+        <h1 class="display-4">Lorem</h1>
+        <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+         <form class="form-inline my-2 my-lg-0" method="GET">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search for Jobs" aria-label="Search">
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+         </form>
+    </div>
+</div>
+
+<div class="container mt-3">
+        <div class="row">
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">JOB title</h5>
+                    <hr>
+                    <p class="card-text">Small job description.</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+</div>
+</body>
+</html>

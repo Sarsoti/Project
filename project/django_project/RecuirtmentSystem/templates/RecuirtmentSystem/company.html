@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to company page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+    <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+    <ul class="navbar-nav ml-auto">
+        {% if user.is_authenticated and user.is_company %}
+        <p class="pt-2">logged in as <strong>{{ user.username }}</strong></p>
+         <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout'%}">Log Out</a>
+         </li>
+        {% endif %}
+    </ul>
+  </nav>
+</div>
+<h3>this is the company page where company can create the new job and view the best employee</h3>
+</body>
+</html>
